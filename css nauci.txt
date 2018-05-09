@@ -1,0 +1,2 @@
+da bi slike uzele 100% width ili heigth trebaju da imaju osobinu display: inline-block jer kada su inline uzimaju full size
+
