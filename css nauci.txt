@@ -1,7 +1,14 @@
 da bi slike uzele 100% width ili heigth trebaju da imaju osobinu display: inline-block jer kada su inline uzimaju full size
 
+background url("") center/cover;
+filter: grayscale(40%);
+width: 100%;
+height: 100%;
+position: fixed;
+z-index: -1;
+
 position vs units:
 1) position:fixed - width:100% uzima prostor celov vw jer je fixna pozicija nezavisna od roditelja
 2) position:absolute - ancestorContent+padding, uzme sirinu od roditelja+padding koji je relativno pozicioniran (pozicioniranje top ili bottom 50% ima razlicit efekat)
-3) position: static || relative - ancestorsContent, najblizi block element roditelj
+3) position: static ili relative - ancestorsContent (bez padding-a), najblizi block element roditelj
 
