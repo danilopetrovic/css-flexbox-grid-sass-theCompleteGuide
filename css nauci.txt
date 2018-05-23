@@ -12,3 +12,14 @@ position vs units:
 2) position:absolute - ancestorContent+padding, uzme sirinu od roditelja+padding koji je relativno pozicioniran (pozicioniranje top ili bottom 50% ima razlicit efekat)
 3) position: static ili relative - ancestorsContent (bez padding-a), najblizi block element roditelj
 
+input[id*="terms"],
+input[id*="terms"] + label {
+	color: red;
+}
+
+font: inherit; - ne koristi default font na primer u input poljima formi nego uzme onaj koj si definisao
+
+outline - kao border koristi se za fokus inpute 
+
+font-variant: small-caps; - sva capital slova samo mala i velika se razlikuju u velicini
+font-stretch: ultra-condensed;
