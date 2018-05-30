@@ -85,5 +85,10 @@ align-self: center, start, end;
 automatsko dodavanje redova ili kolona
 grid-auto-rows: auto, 10rem, minmax(8rem, auto); - default velicina svakog sledeceg reda ako nisu definisani redovi je auto ali moze da se promeni u drugu velicinu
 grid-auto-flow: row, column; - default je row, dodavanje automatskog sadrzaja na desno umesto u sledece redove
+grid-auto-flow: row dense; - zauzimanje praznog prostora (npr galerija)
 grid-auto-columns: 5rem;
+
+auto-fill & auto-fit - automatsko stvaranje kolona za onoliko elemenata koliko moze da se vidi u viewportu
+grid-template-columns: repeat(auto-fill, 10rem);
+grid-template-columns: repeat(auto-fit, 10rem); - ovaj ih i centrira
 
