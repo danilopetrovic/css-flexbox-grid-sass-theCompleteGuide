@@ -19,7 +19,7 @@ input[id*="terms"] + label {
 
 font: inherit; - ne koristi default font na primer u input poljima formi nego uzme onaj koj si definisao
 
-outline - kao border koristi se za fokus inpute 
+outline - kao border koristi se za fokus inpute
 
 font-variant: small-caps; - sva capital slova samo mala i velika se razlikuju u velicini
 font-stretch: ultra-condensed;
@@ -40,3 +40,50 @@ flex-grow: - ostatak prostora deli na brojilac i imenilac pa koliko mu frakcija 
 flex-shrink: 1 je default, 0 nece da se smanji, 5 brze ce se smanjivati;
 flex-basis: 300px, 10%, auto - koliko zauzima na main-axis-u u zavisnosti dal je row ili column uzima sirinu ili visinu
 flex: <flex-grow> <flex-shrink> <flex-basis> - 0 1 auto; je default - (shrothand)
+
+grid
+display: grid;
+grid-template-columns: 200px 150px 20% 1fr;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: 5rem auto;
+grid-template-rows: 5rem minmax(10px, auto);
+grid-template-rows: [row-1-start] 5rem [row-1-end row-2-start] minmax(10px, auto) [row-2-end row-3-start] 100px [row-3-end]; - davanje imena linijama izmedju
+grid-column-start: 3;
+grid-column-end: 5;
+grid-column-end: span 2; -koliko kolona da se prosiri
+grid-column-end: -1; -pocne da broji od kraja pa zauzme ceo red
+grid-row-start: 1;
+grid-row-end: 3;
+
+grid-column: 1 / -1; <grid-column-start> / <grid-column-end> (shrothand) mora da ide kosa crta izmedju
+grid-row: row-2-start / span 1; <grid-row-start> / <grid-row-end> (shrothand)
+grid-area: <grid-row-start> / <grid-column-start> / <grid-row-end> / <grid-column-end> - (shrothand)
+
+grid-column-gap: 15px;
+grid-row-gap: 10px;
+grid-gap: <grid-row-gap> <grid-column-gap>; - (shrothand)
+
+
+definisanje preko templatea
+grid-template-areas: "header header header header"
+                     "side side main main"
+                     "footer footer . ."; - ovo ide u greed container, tacka znaci da ostavi prazno polje
+grid-area: header; - ovo ide u dete grida
+
+fit-content(8rem); - funkcija koja radi slicno kao minmax, stavlja minimalno 8rem pa kada treba vise onda sam povecava
+
+justify-items: center, start, end; - u grid container-u ubacis svojstvo kako bi bili pozicionirani u centar a ne u vise kolona stretchovano
+align-items: center, start, end;
+pozicioniranje celog grida (korisno ako se nadje u nekom elementu grid)
+justify-content: center, start, end; pozicionira ceo grid horizontalno
+align-content: center, start, end; pozicionira ceo grid vertikalno
+
+overwriting positioning from parent to a single element
+justify-self: center, start, end;
+align-self: center, start, end;
+
+automatsko dodavanje redova ili kolona
+grid-auto-rows: auto, 10rem, minmax(8rem, auto); - default velicina svakog sledeceg reda ako nisu definisani redovi je auto ali moze da se promeni u drugu velicinu
+grid-auto-flow: row, column; - default je row, dodavanje automatskog sadrzaja na desno umesto u sledece redove
+grid-auto-columns: 5rem;
+
