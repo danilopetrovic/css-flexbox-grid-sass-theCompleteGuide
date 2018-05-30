@@ -24,8 +24,8 @@ outline - kao border koristi se za fokus inpute
 font-variant: small-caps; - sva capital slova samo mala i velika se razlikuju u velicini
 font-stretch: ultra-condensed;
 
-flex container
-display: flex;
+FLEXBOX
+display: flex; - flex container
 flex-direction: row,column;
 flex-wrap: wrap;
 flex-flow: <'flex-direction'> || <'flex-wrap'>; - (shrothand)
@@ -41,7 +41,7 @@ flex-shrink: 1 je default, 0 nece da se smanji, 5 brze ce se smanjivati;
 flex-basis: 300px, 10%, auto - koliko zauzima na main-axis-u u zavisnosti dal je row ili column uzima sirinu ili visinu
 flex: <flex-grow> <flex-shrink> <flex-basis> - 0 1 auto; je default - (shrothand)
 
-grid
+GRID
 display: grid;
 grid-template-columns: 200px 150px 20% 1fr;
 grid-template-columns: repeat(4, 1fr);
