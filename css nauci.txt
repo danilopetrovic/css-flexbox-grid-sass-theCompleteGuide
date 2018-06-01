@@ -92,3 +92,68 @@ auto-fill & auto-fit - automatsko stvaranje kolona za onoliko elemenata koliko m
 grid-template-columns: repeat(auto-fill, 10rem);
 grid-template-columns: repeat(auto-fit, 10rem); - ovaj ih i centrira
 
+transformacije
+transform: rotateZ(45deg) translateX(10rem) translateY();
+transform-origin: left top; - oko koje tacke ce se vrteti element
+transform: skewY(20deg), skewX(10deg) ili skew(20deg, 10deg); vuce jednu stranicu nekoliko stepeni
+transform: scaleX(2), scaleY(2), scale(2); - zumira sliku tj poveca je
+transform: perspectiv(1000px) rotateX(70deg) rotateY(30deg); - perspective moze da ide na svaki element posebno ili kao property na roditelju pa vazi za sve elemente
+perspective: 1000px;
+perspective-origin: right, 500px; - perspektiva na konteneru sa koje strane gledamo sve
+
+transition
+transition: all
+transition: opacity 0.2s ease-out 1s, transform 500ms ease-out 1s; - stavljaju se efekti koji se posmatraju i moze da ima 4 svojstva (koji property se tranzitira, koliko traje, efekat i delay)
+transition: all 1s cubic-bezier(0.55,0.055,0.675,0.19); - kriva vremena kakvu hoces
+
+animations
+@keyframes wiggle {
+    from {
+        transform: rotateZ(0);
+    }
+    to {
+        transform: rotateZ(10);
+    }
+}
+animation: wiggle 200ms 3s 8 alternate,reverse,alternate-reverse,forwards,backwards,both; - koja animacija, koliko traje, delay, koliko se puta ponavlja i dal se vraca u prethodno stanje
+
+@keyframes wiggle {
+    0% {
+        transform: rotateZ(0);
+    }
+    50% {
+        transform: rotateZ(-10)
+    }
+    100% {
+        transform: rotateZ(10);
+    }
+}
+
+varijable
+definisanje varijable
+:root {
+    --zelenaBoja: green;
+}
+
+koriscenje varijable
+div {
+    background-color: var(--zelenaBoja, #333434); - koristi varijablu ako postoji a ako ne uzme zamensku boju
+}
+
+
+podrzavanje browsera support! ako ne podrzava ignorise to u zagradi
+@supports (display: grid) {
+    .container {
+        display: grid;
+    }
+}
+
+polifills - nesto sto javaskriptom zamenjuje css stvari koje ne podrzavaju stariji browseri! treba se koristiti jako retko jer zesce smaraju! treba znati da postoje
+
+normalizeri - nesto sto resetuje sve na nulu tj sva default podesavanja browsera kako bi onda mogao da definises stranicu da izgleda svuda ista ali da li ti to treba?
+
+kako pravilno davati imena?
+-css ne razume velika i mala slova tako da imena klasa i id-jeva se stavlja sa znakom minus (umesto pocetnaSekcija treba pocetna-sekcija)
+-davati imena klasa id-eva i ostalog po funkcionalnosti a ne po izgledu (umesto crveni-naslov treba glavni-naslov)
+Block Element Modifiers (BEM) - nacin imenovanja klasa (.BLOCK__ELEMENT--MODIFIER)
+
