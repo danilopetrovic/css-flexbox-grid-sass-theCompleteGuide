@@ -24,7 +24,7 @@ outline - kao border koristi se za fokus inpute
 font-variant: small-caps; - sva capital slova samo mala i velika se razlikuju u velicini
 font-stretch: ultra-condensed;
 
-FLEXBOX
+==================== CSS Flexbox ====================
 display: flex; - flex container
 flex-direction: row,column;
 flex-wrap: wrap;
@@ -41,7 +41,7 @@ flex-shrink: 1 je default, 0 nece da se smanji, 5 brze ce se smanjivati;
 flex-basis: 300px, 10%, auto - koliko zauzima na main-axis-u u zavisnosti dal je row ili column uzima sirinu ili visinu
 flex: <flex-grow> <flex-shrink> <flex-basis> - 0 1 auto; je default - (shrothand)
 
-GRID
+===================== CSS Grid ====================
 display: grid;
 grid-template-columns: 200px 150px 20% 1fr;
 grid-template-columns: repeat(4, 1fr);
@@ -129,7 +129,7 @@ animation: wiggle 200ms 3s 8 alternate,reverse,alternate-reverse,forwards,backwa
     }
 }
 
-varijable
+==================== CSS Variables ===================
 definisanje varijable
 :root {
     --zelenaBoja: green;
@@ -148,6 +148,7 @@ podrzavanje browsera support! ako ne podrzava ignorise to u zagradi
     }
 }
 
+=================== Proof CSS Code ===================
 polifills - nesto sto javaskriptom zamenjuje css stvari koje ne podrzavaju stariji browseri! treba se koristiti jako retko jer zesce smaraju! treba znati da postoje
 
 normalizeri - nesto sto resetuje sve na nulu tj sva default podesavanja browsera kako bi onda mogao da definises stranicu da izgleda svuda ista ali da li ti to treba?
@@ -156,4 +157,56 @@ kako pravilno davati imena?
 -css ne razume velika i mala slova tako da imena klasa i id-jeva se stavlja sa znakom minus (umesto pocetnaSekcija treba pocetna-sekcija)
 -davati imena klasa id-eva i ostalog po funkcionalnosti a ne po izgledu (umesto crveni-naslov treba glavni-naslov)
 Block Element Modifiers (BEM) - nacin imenovanja klasa (.BLOCK__ELEMENT--MODIFIER)
+
+======================== SASS ========================
+npm install -g sass
+sass --watch input.scss output.css
+sass --watch input.scss:output.css
+sass --watch app/sass:public/stylesheets
+
+$main-color: #521751;
+$border-default: 0.05rem solid $main-color;
+
+// MAPING - map of colors
+$colors: (main: #521751, secondary: #fa923f);
+$border-default: 0.05rem solid map-get($colors, main);
+
+https://sass-lang.com/documentation/Sass/Script/Functions.html //pogledati na sajtu koje sve funkcije mogu da se koriste
+background: lighten(map-get($colors, main), 72%);
+
+//partials pocinju donjom crtom i inkluduju se u scss!!! nije lose imati vise inkludova kako bi se developing radio sa vise fajlova, a ucitavanje css-a bio samo jedan file, jer on sve te includove spoji u 1 css
+
+// moze u sass-u @media query da se nestuju u obican kod
+// Extend/Inheritance - moze da se nasledi deo koda sa @extend umesto da se dodaje na primer klasa u html-u
+// mixins
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+@include display-flex();
+
+
+@mixin media-min-width($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+@include media-min-width(40rem){
+  html{
+    font-size: 125%;
+  }
+}
+
+//pseudo selektori ili klase su POVEZANE a ne nestovane sa znakom &
+.documentation-link{
+    text-decoration: none;
+    &:hover,
+    &:active {
+        color: white;
+    }
+}
+
+sass loader moze da ide sa webpack-om
 

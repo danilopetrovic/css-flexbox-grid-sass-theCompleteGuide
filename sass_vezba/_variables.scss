@@ -1,0 +1,4 @@
+//$main-color: #521751;
+// MAPS - map of colors
+$colors: (main: #521751, secondary: #fa923f);
+$border-default: 0.05rem solid map-get($colors, main);

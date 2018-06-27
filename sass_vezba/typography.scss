@@ -1,0 +1,8 @@
+@import "_variables.scss";
+/*pocetak sa tipografijom*/
+.char-highlight {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: map-get($colors, main);
+}
+/*kraj sa tipografijom*/
